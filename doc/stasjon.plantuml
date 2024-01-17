@@ -16,6 +16,7 @@
         str destinasjon
         list vogner
         float beregn_vekt()
+        None registrer_vogn(Vogn vogn)
         None registrer_pakke(Pakke pakke)
     }
 
