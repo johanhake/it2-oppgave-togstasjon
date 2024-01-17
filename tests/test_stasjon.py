@@ -3,7 +3,7 @@ from ..src.stasjon import Stasjon, Lokomotiv, Vogn, Pakke
 def test_legg_til_lokomotiv():
     stasjon = Stasjon("Oslo")
     assert stasjon.navn == "Oslo"
-    assert len(stasjon.lokomotiv) == 2
+    assert len(stasjon.lokomotiv) == 0
 
     lok1 = Lokomotiv(12345, 500, 4000, "Bergen")
     lok2 = Lokomotiv(12346, 500, 4000, "Moss")
@@ -13,10 +13,10 @@ def test_legg_til_lokomotiv():
     assert lok1.maksvekt == 4000
     assert lok1.destinasjon == "Bergen"
 
-    assert lok1.serienr == 12346
-    assert lok1.vekt == 500
-    assert lok1.maksvekt == 4000
-    assert lok1.destinasjon == "Moss"
+    assert lok2.serienr == 12346
+    assert lok2.vekt == 500
+    assert lok2.maksvekt == 4000
+    assert lok2.destinasjon == "Moss"
 
     stasjon.registrer_lokomotiv(lok1)
     stasjon.registrer_lokomotiv(lok2)
@@ -53,8 +53,10 @@ def test_legg_til_pakke():
         lok2.registrer_vogn(Vogn(1245+10*i, 100, 200))
 
     for _ in range(100):
-        stasjon.registrer_pakke(Pakke("Oslo", 10, "ting"))
-        stasjon.registrer_pakke(Pakke("Bergen", 20, "ting"))
+        stasjon.registrer_pakke(Pakke("Bergen", 5, "ting"))
+        stasjon.registrer_pakke(Pakke("Moss", 5, "ting"))
     
-    assert lok1.beregn_vekt() == (500+5*100+100*10)
-    assert lok2.beregn_vekt() == (500+10*100+100*20)
+    assert lok1.beregn_vekt() == (500+5*100+100*5)
+    assert lok2.beregn_vekt() == (500+10*100+100*5)
+
+    # Her kan vi legge til flere tester for å sjekke om pakker er for tunge osv. 
