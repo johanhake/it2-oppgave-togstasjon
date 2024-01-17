@@ -20,6 +20,7 @@
     }
 
     class Stasjon{
+        str navn
         list Lokomotiv
         None registrer_lokomotiv(Lokomotiv lokomotiv)
         None registrer_pakke(Pakke pakke)
