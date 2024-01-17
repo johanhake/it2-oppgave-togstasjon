@@ -21,7 +21,7 @@
 
     class Stasjon{
         str navn
-        list Lokomotiv
+        list lokomotiv
         None registrer_lokomotiv(Lokomotiv lokomotiv)
         None registrer_pakke(Pakke pakke)
     }
