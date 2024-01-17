@@ -1,3 +1,38 @@
 @startuml stasjon
+    class Togdel{
+        int serienr
+        float vekt
+        float maksvekt
+        {abstract} float beregn_vekt()
+        bool sjekk_vekt(float vekt=0.0)
+    }
 
+    class Vogn{
+        list pakker
+        float beregn_vekt()
+    }
+
+    class Lokomotiv{
+        str destinasjon
+        list vogner
+        float beregn_vekt()
+        None registrer_pakke(Pakke pakke)
+    }
+
+    class Stasjon{
+        list Lokomotiv
+        None registrer_lokomotiv(Lokomotiv lokomotiv)
+        None registrer_pakke(Pakke pakke)
+    }
+
+    class Pakke{
+        str destinasjon
+        float vekt
+        str innhold
+    }
+
+    Lokomotiv --|> Togdel
+    Vogn --|> Togdel
+    Stasjon --o Lokomotiv
+    Vogn --o Pakke
 @enduml
