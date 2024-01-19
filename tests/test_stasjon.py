@@ -39,6 +39,7 @@ def test_legg_til_vogn():
     assert lok2.beregn_vekt() == (500+10*100)
     assert lok1.sjekk_vekt()
     assert lok2.sjekk_vekt()
+    assert not lok2.registrer_vogn(Vogn(1245+10*30, 10000, 200))
 
 def test_legg_til_pakke():
     stasjon = Stasjon("Oslo")
@@ -60,3 +61,6 @@ def test_legg_til_pakke():
     assert lok2.beregn_vekt() == (500+10*100+100*5)
 
     # Her kan vi legge til flere tester for å sjekke om pakker er for tunge osv. 
+
+if __name__ == "__main__":
+    test_legg_til_lokomotiv()

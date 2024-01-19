@@ -32,13 +32,13 @@ class Lokomotiv(Togdel):
         self.vogner = []
 
     def beregn_vekt(self):
-        return self.vekt + sum(vogn.beregn_vekt() for vogn in self.vogner)
+        return self.vekt + sum([vogn.beregn_vekt() for vogn in self.vogner])
     
     def registrer_vogn(self, vogn):
         if self.sjekk_vekt(vogn.beregn_vekt()):
             self.vogner.append(vogn)
-            return  
-        raise ValueError("Vognen er for tung. Den ble ikke registrert")
+            return True
+        return False
     
     def registrer_pakke(self, pakke):
         if self.sjekk_vekt(pakke.vekt):
@@ -54,7 +54,7 @@ class Vogn(Togdel):
         self.pakker = []
 
     def beregn_vekt(self):
-        return self.vekt + sum(pakke.vekt for pakke in self.pakker)
+        return self.vekt + sum([pakke.vekt for pakke in self.pakker])
     
 class Pakke:
     def __init__(self, destinasjon, vekt, innhold):
