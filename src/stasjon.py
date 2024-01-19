@@ -23,7 +23,7 @@ class Togdel:
         NotImplemented("Klassen Togdel må arves og beregn_vekt må implementers")
 
     def sjekk_vekt(self, vekt=.0):
-        return self.beregn_vekt() < self.maksvekt + vekt
+        return self.beregn_vekt() + vekt <= self.maksvekt
     
 class Lokomotiv(Togdel):
     def __init__(self, serienr, vekt, maksvekt, destinasjon):
